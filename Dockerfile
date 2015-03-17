@@ -13,6 +13,18 @@ RUN emerge -v net-misc/curl \
  && /usr/local/sbin/builder-enter
 
 
+# Install packages
+RUN emerge -v \
+    app-admin/logrotate \
+    app-admin/syslog-ng \
+    net-firewall/iptables \
+    net-misc/dhcpcd \
+    net-misc/ntp \
+    sys-apps/iproute2 \
+    sys-auth/nss-myhostname \
+    sys-block/nbd
+
+
 # Add patches
 ADD ./patches/etc /etc
 
