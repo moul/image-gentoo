@@ -14,12 +14,16 @@ RUN emerge -v net-misc/curl \
 
 
 # Add patches
-ADD ./patches/ /
+ADD ./patches/etc /etc
 
 
 # Set default locale to en_US.UTF-8
 RUN locale-gen \
  && eselect locale set en_US.utf8
+
+
+# Enable services
+RUN rc-update add ssh-keys
 
 
 # Clean rootfs from image-builder
