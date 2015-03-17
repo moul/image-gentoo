@@ -10,6 +10,6 @@ depend() {
 
 start() {
     ebegin "fetching SSH keys"
-    /usr/local/bin/oc-fetch-ssh-keys
+    /usr/sbin/oc-fetch-ssh-keys
     eend $?
 }
