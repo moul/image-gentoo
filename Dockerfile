@@ -37,7 +37,8 @@ RUN locale-gen \
 # Enable services
 RUN rc-update add ssh-keys && \
   rc-update add sshd default && \
-  rc-update add ntpd default
+  rc-update add ntpd default &&
+  rc-update add syslog-ng default
 
 
 # Clean rootfs from image-builder
