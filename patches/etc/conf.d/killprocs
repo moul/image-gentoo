@@ -1,0 +1,5 @@
+# If you wish to pass any options to killall5 during shutdown,
+# you should do so here.
+
+# Kill all processes except the one matching @xnbd.
+killall5_opts="--regexp '^([^@]|@[^x]|@x[^n]|@xn[^b]|@xnb[^d])'"
