@@ -36,11 +36,14 @@ RUN locale-gen \
 
 # Enable services
 RUN rc-update add ssh-keys && \
+  rc-update add set-ocs-hostname default && \
   rc-update add sshd default && \
   rc-update add ntpd default && \
   rc-update add syslog-ng default && \
   rc-update add nbd-root-disconnect shutdown
 
+
+RUN rm -rf /var/tmp/portage/* /usr/portage/distfiles/* /usr/portage
 
 # Clean rootfs from image-builder
 RUN /usr/local/sbin/builder-leave
