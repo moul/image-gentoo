@@ -10,7 +10,7 @@ depend() {
 }
 
 start() {
-    ebegin "setting OCS hostname"
+    ebegin "Setting OCS hostname"
     echo "hostname=\"$(cat /etc/hostname)\"" > /etc/conf.d/hostname
     eend $?
 }
