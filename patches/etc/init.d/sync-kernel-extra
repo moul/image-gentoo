@@ -1,0 +1,16 @@
+#!/sbin/runscript
+# Copyright (c) 2015 Online Labs Cloud Team <cloud-team@labs.online.net>
+# Released under the MIT license.
+
+description="Downloads kernel modules/headers from OCS' mirror"
+
+depend() {
+    need root
+}
+
+start() {
+    ebegin "syncing kernel modules/headers"
+    /usr/local/sbin/oc-sync-kernel-headers
+    /usr/local/sbin/oc-sync-kerel-modules
+    eend $?
+}
