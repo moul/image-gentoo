@@ -48,7 +48,7 @@ RUN rc-update add set-ocs-hostname boot && \
 RUN rc-update del keymaps boot
 
 
-RUN rm -rf /var/tmp/portage/* /usr/portage/distfiles/* /usr/portage
+RUN rm -rf /var/tmp/portage/* /usr/portage/distfiles/*
 
 # Clean rootfs from image-builder
 RUN /usr/local/sbin/builder-leave
