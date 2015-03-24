@@ -6,6 +6,7 @@ description="Set OCS hostname"
 
 depend() {
     need root
+    before hostname
 }
 
 start() {

@@ -36,7 +36,7 @@ RUN locale-gen \
 
 # Enable services
 RUN rc-update add ssh-keys && \
-  rc-update add set-ocs-hostname default && \
+  rc-update add set-ocs-hostname boot && \
   rc-update add sshd default && \
   rc-update add ntpd default && \
   rc-update add syslog-ng default && \
