@@ -6,6 +6,7 @@ description="Downloads kernel modules/headers from OCS' mirror"
 
 depend() {
     need root
+    before kmod-static-nodes
 }
 
 start() {

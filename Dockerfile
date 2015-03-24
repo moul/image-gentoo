@@ -36,11 +36,11 @@ RUN locale-gen \
 
 # Enable services
 RUN rc-update add set-ocs-hostname boot && \
+  rc-update add sync-kernel-extra sysinit && \
   rc-update add ssh-keys default && \
   rc-update add sshd default && \
   rc-update add ntpd default && \
   rc-update add syslog-ng default && \
-  rc-update add sync-kernel-extra default && \
   rc-update add nbd-root-disconnect shutdown
 
 
