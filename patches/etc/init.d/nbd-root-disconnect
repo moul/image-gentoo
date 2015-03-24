@@ -12,7 +12,7 @@ start() {
     # keep these binaries in cache
     cat /sbin/{halt,reboot,shutdown} > /dev/null
     ebegin "Disconnecting root NBD volume"
-    /usr/local/sbin/nbd-client -d /dev/nbd0
+    /usr/sbin/nbd-client -d /dev/nbd0
     eend $?
     echo b > /proc/sysrq-trigger
 }

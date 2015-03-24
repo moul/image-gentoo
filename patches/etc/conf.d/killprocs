@@ -2,4 +2,4 @@
 # you should do so here.
 
 # Kill all processes except the one matching @xnbd.
-killall5_opts="--regexp '^([^@]|@[^x]|@x[^n]|@xn[^b]|@xnb[^d])'"
+killall5_opts="-o $(pgrep -f '@xnbd-client.*/dev/nbd0')"
