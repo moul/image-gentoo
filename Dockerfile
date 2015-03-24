@@ -44,6 +44,10 @@ RUN rc-update add set-ocs-hostname boot && \
   rc-update add nbd-root-disconnect shutdown
 
 
+# Disable uneeded services
+RUN rc-update del keymaps boot
+
+
 RUN rm -rf /var/tmp/portage/* /usr/portage/distfiles/* /usr/portage
 
 # Clean rootfs from image-builder
