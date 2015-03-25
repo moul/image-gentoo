@@ -1,0 +1,15 @@
+#!/sbin/runscript
+# Copyright (c) 2015 Online Labs Cloud Team <cloud-team@labs.online.net>
+# Released under the MIT license.
+
+description="Waits for additional OCS volumes"
+
+depend() {
+    need fsck
+}
+
+start() {
+    ebegin "Connecting NBD extra volumes"
+    /usr/local/sbin/oc-sync-connect-extra-volumes
+    eend $?
+}

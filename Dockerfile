@@ -35,7 +35,8 @@ RUN locale-gen \
 
 
 # Enable services
-RUN rc-update add set-ocs-hostname boot && \
+RUN rc-update add set-ocs-hostname boot &&
+  rc-update add sync-connect-extra-volumes boot && \
   rc-update add sync-kernel-extra sysinit && \
   rc-update add ssh-keys default && \
   rc-update add sshd default && \
@@ -48,7 +49,12 @@ RUN rc-update add set-ocs-hostname boot && \
 RUN rc-update del keymaps boot
 
 
+# Create /var/lib/misc, required by service 'random' at stop
+RUN mkdir -p /var/lib/misc
+
+
 RUN rm -rf /var/tmp/portage/* /usr/portage/distfiles/*
+
 
 # Clean rootfs from image-builder
 RUN /usr/local/sbin/builder-leave
