@@ -1,0 +1,16 @@
+#!/sbin/runscript
+# Copyright (c) 2015 Online Labs Cloud Team <cloud-team@labs.online.net>
+# Released under the MIT license.
+
+description="Disconnects additional OCS volumes"
+
+depend() {
+    after mount-ro fsck
+    nbd-root-disconnect
+}
+
+start() {
+    ebegin "Disconnecting extra volumes"
+    /usr/local/sbin/oc-nbd-disconnect-extra
+    eend $?
+}
