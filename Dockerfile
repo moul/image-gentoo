@@ -43,6 +43,7 @@ RUN rc-update add set-ocs-hostname boot && \
   rc-update add sshd default && \
   rc-update add ntpd default && \
   rc-update add syslog-ng default && \
+  rc-update add disconnect-extra-volumes shutdown && \
   rc-update add nbd-root-disconnect shutdown
 
 
