@@ -19,9 +19,9 @@ sync_connect_extra_volumes() {
 	nbd_port=$(echo $export_uri | sed 's|nbd://.*:\(.*\)|\1|')
 
 	device="/dev/nbd${nbd_id}"
-	until nbd-client -c $device
+	until (nbd-client -c $device &> /dev/null)
 	do
-	    (nbd-client $nbd_host $nbd_port -b 4096 $device || sleep 1) > /dev/null
+	    (nbd-client $nbd_host $nbd_port -b 4096 $device || sleep 1) &> /dev/null
 	done
     done
 }
