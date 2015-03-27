@@ -9,8 +9,7 @@ get_value() {
 }
 
 sync_connect_extra_volumes() {
-    nbd_id=0
-    for volume in $(get_value VOLUMES)
+    for nbd_id in $(get_value VOLUMES)
     do
 	# ignore root nbd device, it is handled differently.
 	test $nbd_id -eq 0 && continue
@@ -19,13 +18,11 @@ sync_connect_extra_volumes() {
 	nbd_host=$(echo $export_uri | sed 's|nbd://\(.*\):.*|\1|')
 	nbd_port=$(echo $export_uri | sed 's|nbd://.*:\(.*\)|\1|')
 
-	device=$("/dev/nbd${nbd_id}")
+	device="/dev/nbd${nbd_id}"
 	until nbd-client -c $device
 	do
-	    nbd-client -b 4096 -p $nbd_host $nbd_port
-	    sleep 5
+	    nbd-client $nbd_host $nbd_port -b 4096 $device || sleep 1
 	done
-	nbd_id=$((nbd_id + 1))
     done
 }
 
