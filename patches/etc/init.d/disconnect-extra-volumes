@@ -6,7 +6,7 @@ description="Disconnects additional OCS volumes"
 
 depend() {
     after mount-ro fsck
-    nbd-root-disconnect
+    before nbd-root-disconnect
 }
 
 start() {

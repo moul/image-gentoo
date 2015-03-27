@@ -4,5 +4,5 @@
 
 for device in /dev/nbd[^0]*
 do
-    nbd-client -c $device && nbd-client -d $device
+    (nbd-client -c $device && nbd-client -d $device > /dev/null) || true
 done

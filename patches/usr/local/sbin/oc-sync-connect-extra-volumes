@@ -21,7 +21,7 @@ sync_connect_extra_volumes() {
 	device="/dev/nbd${nbd_id}"
 	until nbd-client -c $device
 	do
-	    nbd-client $nbd_host $nbd_port -b 4096 $device || sleep 1
+	    (nbd-client $nbd_host $nbd_port -b 4096 $device || sleep 1) > /dev/null
 	done
     done
 }
