@@ -1,15 +1,15 @@
-## -*- docker-image-name: "armbuild/ocs-distrib-gentoo:latest" -*-
+## -*- docker-image-name: "armbuild/scw-distrib-gentoo:latest" -*-
 FROM armbuild/gentoo:stage3
-MAINTAINER Online Labs <opensource@ocs.online.net> (@online_en)
+MAINTAINER Scaleway <opensource@scaleway.com> (@scaleway)
 
 
 # Environment
-ENV OCS_BASE_IMAGE armbuild/ocs-gentoo:latest
+ENV SCW_BASE_IMAGE armbuild/scw-gentoo:latest
 
 
 # Patch rootfs for docker-based builds
 RUN emerge -v net-misc/curl \
- && curl -Lq http://j.mp/ocs-scripts | FLAVORS=common,docker-based bash -e \
+ && curl -Lq http://j.mp/scw-skeleton | FLAVORS=common,docker-based bash -e \
  && /usr/local/sbin/builder-enter
 
 

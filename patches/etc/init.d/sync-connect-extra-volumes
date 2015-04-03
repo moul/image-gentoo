@@ -1,8 +1,8 @@
 #!/sbin/runscript
-# Copyright (c) 2015 Online Labs Cloud Team <cloud-team@labs.online.net>
+# Copyright (c) 2015 Scaleway <opensource@scaleway.com>
 # Released under the MIT license.
 
-description="Waits for additional OCS volumes"
+description="Waits for additional SCW volumes"
 
 depend() {
     need fsck
