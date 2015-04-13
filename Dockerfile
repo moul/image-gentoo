@@ -9,7 +9,7 @@ ENV SCW_BASE_IMAGE armbuild/scw-gentoo:latest
 
 # Patch rootfs for docker-based builds
 RUN emerge -v net-misc/curl \
- && curl -Lq http://j.mp/scw-skeleton | FLAVORS=common,docker-based bash -e \
+ && curl -Lq http://j.mp/scw-skeleton | FLAVORS=common,docker-based,openrc bash -e \
  && /usr/local/sbin/builder-enter
 
 
@@ -36,15 +36,17 @@ RUN locale-gen \
 
 
 # Enable services
-RUN rc-update add set-ocs-hostname boot && \
-  rc-update add sync-connect-extra-volumes boot && \
-  rc-update add sync-kernel-extra sysinit && \
-  rc-update add ssh-keys default && \
-  rc-update add sshd default && \
-  rc-update add ntpd default && \
-  rc-update add syslog-ng default && \
-  rc-update add disconnect-extra-volumes shutdown && \
-  rc-update add nbd-root-disconnect shutdown
+RUN true \
+ && rc-update add disconnect-extra-volumes shutdown \
+ && rc-update add nbd-root-disconnect shutdown \
+ && rc-update add ntpd default \
+ && rc-update add set-confd-hostname boot \
+ && rc-update add ssh-keys default \
+ && rc-update add sshd default \
+ && rc-update add sync-connect-extra-volumes boot \
+ && rc-update add sync-kernel-extra sysinit \
+ && rc-update add syslog-ng default \
+ && rc-status
 
 
 # Disable uneeded services
