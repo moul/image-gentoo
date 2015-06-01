@@ -38,6 +38,7 @@ RUN locale-gen \
 # Enable services
 RUN true \
  && rc-update add disconnect-extra-volumes shutdown \
+ && rc-update add initramfs-shutdown shutdown \
  && rc-update add nbd-root-disconnect shutdown \
  && rc-update add ntpd default \
  && rc-update add set-confd-hostname boot \
