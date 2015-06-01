@@ -27,7 +27,6 @@ RUN emerge -v \
 
 # Add patches
 ADD ./patches/etc /etc
-ADD ./patches/usr /usr
 
 
 # Set default locale to en_US.UTF-8
